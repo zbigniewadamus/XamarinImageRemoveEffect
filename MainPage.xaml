@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnimationTests.MainPage">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="500">
+        <Button Text="RESET" FontSize="25" HorizontalOptions="Center" Clicked="Reset"/>
+        <CollectionView 
+            ItemsUpdatingScrollMode="KeepScrollOffset"  
+            HeightRequest="220" 
+            HorizontalScrollBarVisibility="Always" 
+            EmptyView="No pictures to display" 
+            ItemsSource="{Binding list}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image 
+                            WidthRequest="150" 
+                            HeightRequest="150" 
+                            Source="{Binding Image}" 
+                            Margin="10,30" 
+                            Aspect="Fill">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RemovePicture"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
